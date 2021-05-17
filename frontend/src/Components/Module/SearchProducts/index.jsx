@@ -1,6 +1,6 @@
-import SearchBar from "../../Layout/SearchBar";
+import SearchBar from '../../Layout/SearchBar';
 
-import { Wrapper, Title } from "./style";
+import { Wrapper, Title } from './style';
 
 function SearchProducts({ ...props }) {
   return (

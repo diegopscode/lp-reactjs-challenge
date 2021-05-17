@@ -50,18 +50,22 @@ const searchProducts = (_, { search = '', page, limit }) => {
 };
 
 const lastVisitedProducts = () => {
-  return products.sort(
-    (currentProduct, nextProduct) =>
-      new Date(currentProduct.visits.lastVisited).getTime() -
-      new Date(nextProduct.visits.lastVisited).getTime()
-  );
+  return products
+    .sort(
+      (currentProduct, nextProduct) =>
+        new Date(currentProduct.visits.lastVisited).getTime() -
+        new Date(nextProduct.visits.lastVisited).getTime()
+    )
+    .slice(0, 5);
 };
 
 const mostVisitedProducts = () => {
-  return products.sort(
-    (currentProduct, nextProduct) =>
-      nextProduct.visits.total - currentProduct.visits.total
-  );
+  return products
+    .sort(
+      (currentProduct, nextProduct) =>
+        nextProduct.visits.total - currentProduct.visits.total
+    )
+    .slice(0, 5);
 };
 
 module.exports = {

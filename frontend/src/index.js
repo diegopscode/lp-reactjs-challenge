@@ -1,19 +1,17 @@
-import ReactDOM from "react-dom";
-import App from "./App";
-import reportWebVitals from "./reportWebVitals";
+import ReactDOM from 'react-dom';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
 
-import GlobalStyles from "./Styled/Global";
+import GlobalStyles from './Styled/Global';
 
-import store from "./Store";
-import { Provider } from "react-redux";
+import store from './Store';
+import { Provider } from 'react-redux';
 
-import { ApolloClient, InMemoryCache } from "@apollo/client";
-import { ApolloProvider } from "@apollo/client/react";
-
-console.log(process.env);
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { ApolloProvider } from '@apollo/client/react';
 
 const client = new ApolloClient({
-  uri: "http://localhost:4000/graphql",
+  uri: 'http://localhost:4000/graphql',
   cache: new InMemoryCache(),
 });
 
@@ -24,7 +22,7 @@ ReactDOM.render(
       <App />
     </Provider>
   </ApolloProvider>,
-  document.getElementById("root")
+  document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -1,6 +1,6 @@
-import { useEffect, useState, useMemo } from "react";
-import CardDetail from "../../Layout/CardDetail";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { useEffect, useState, useMemo } from 'react';
+import CardDetail from '../../Layout/CardDetail';
+import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 
 import {
   Wrapper,
@@ -11,14 +11,14 @@ import {
   SectionTitle,
   SectionItems,
   PaginateAction,
-} from "./style";
+} from './style';
 
-const SECTION_LIST_ID = ["neighborhood", "city", "zipcode", "type"];
+const SECTION_LIST_ID = ['neighborhood', 'city', 'zipcode', 'type'];
 const SECTION_LIST_TITLE = [
-  "Neighborhood",
-  "City",
-  "Zipcode",
-  "Type of property",
+  'Neighborhood',
+  'City',
+  'Zipcode',
+  'Type of property',
 ];
 
 function ProductsList({ viewStyle, paginate, onPrevPage, onNextPage }) {
@@ -33,7 +33,6 @@ function ProductsList({ viewStyle, paginate, onPrevPage, onNextPage }) {
   };
 
   const renderSectionStyle = useMemo(() => {
-    console.log("UPDATE!");
     return SECTION_LIST_ID.map(
       (section, index) =>
         sections[section]?.length > 0 && (
@@ -52,7 +51,7 @@ function ProductsList({ viewStyle, paginate, onPrevPage, onNextPage }) {
   }, [sections]);
 
   useEffect(() => {
-    if (viewStyle !== "all") {
+    if (viewStyle !== 'all') {
       const _sections = {
         neighborhood: [],
         city: [],
@@ -72,7 +71,7 @@ function ProductsList({ viewStyle, paginate, onPrevPage, onNextPage }) {
 
   return (
     <Wrapper>
-      {viewStyle === "all" ? renderGlobalStyle() : renderSectionStyle}
+      {viewStyle === 'all' ? renderGlobalStyle() : renderSectionStyle}
 
       <PaginateWrapper>
         <Text>Listings by page: {paginate.limit}</Text>

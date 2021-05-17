@@ -1,6 +1,6 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
-import Colors from "./Colors";
+import Colors from './Colors';
 
 const GlobalStyles = createGlobalStyle`
   * {
@@ -51,6 +51,7 @@ const GlobalStyles = createGlobalStyle`
 	.container {
 		max-width: 1024px;
 		margin: 0 auto;
+		padding: 0 20px;
 	}
 `;
 

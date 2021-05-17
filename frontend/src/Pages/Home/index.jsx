@@ -1,21 +1,21 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { useQuery } from "@apollo/client";
-import { useHistory } from "react-router-dom";
-import { fetchHomeProducts } from "../../Requests/Products";
-import { setProductSearch } from "../../Store/Reducers/products";
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useQuery } from '@apollo/client';
+import { useHistory } from 'react-router-dom';
+import { fetchHomeProducts } from '../../Requests/Products';
+import { setProductSearch } from '../../Store/Reducers/products';
 
-import Section from "../../Components/Base/Section";
-import SearchProducts from "../../Components/Module/SearchProducts";
-import ProductsRow from "../../Components/Module/ProductsRow";
+import Section from '../../Components/Base/Section';
+import SearchProducts from '../../Components/Module/SearchProducts';
+import ProductsRow from '../../Components/Module/ProductsRow';
 
-import { Container, HeadContent, BodyContent } from "./style";
+import { Container, HeadContent, BodyContent } from './style';
 
 function Home() {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState('');
   const { loading, data, error } = useQuery(fetchHomeProducts);
 
   function handleOnChange(e) {
@@ -25,31 +25,27 @@ function Home() {
   function handleSubmit(e) {
     e.preventDefault();
     dispatch(setProductSearch(search));
-    history.push("/products");
+    history.push('/products');
   }
 
   return (
-    <Container className="container">
+    <Container>
       <HeadContent>
-        <form onSubmit={handleSubmit}>
+        <form className='container' onSubmit={handleSubmit}>
           <SearchProducts value={search} onChange={handleOnChange} />
         </form>
       </HeadContent>
       {!error ? (
-        <BodyContent>
-          <Section title="Most Visited">
-            {!loading && (
-              <ProductsRow items={data.mostVisitedProducts.slice(0, 5)} />
-            )}
+        <BodyContent className='container'>
+          <Section title='Most Visited'>
+            {!loading && <ProductsRow items={data.mostVisitedProducts} />}
           </Section>
-          <Section title="Last Visited">
-            {!loading && (
-              <ProductsRow items={data.lastVisitedProducts.slice(0, 5)} />
-            )}
+          <Section title='Last Visited'>
+            {!loading && <ProductsRow items={data.lastVisitedProducts} />}
           </Section>
         </BodyContent>
       ) : (
-        <Section title="No data to load!" />
+        <Section title='No data to load!' />
       )}
     </Container>
   );

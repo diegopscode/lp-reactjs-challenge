@@ -1,8 +1,8 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   position: relative;
-  padding: 40px;
+  padding: 40px 0;
 `;
 
 export const Title = styled.h3`
